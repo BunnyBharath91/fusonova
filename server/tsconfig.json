@@ -8,7 +8,10 @@
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "paths": {
+            "@prisma/client/runtime/library": ["./generated/prisma/runtime/client"]
+        }
     },
     "include": [
         "./**/*.ts"

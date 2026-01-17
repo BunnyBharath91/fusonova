@@ -1,6 +1,7 @@
 import {Request, Response} from 'express'
 import * as Sentry from "@sentry/node";
 import { prisma } from '../configs/prisma.js';
+import { syncUserFromClerk } from '../utils/userSync.js';
 
 // Get User Credits
 export const getUserCredits = async (req: Request, res: Response) => {
@@ -9,10 +10,16 @@ export const getUserCredits = async (req: Request, res: Response) => {
         const {userId} = req.auth();
         if(!userId) {return res.status(401).json({message: 'Unauthorized'})}
 
-        const user = await prisma.user.findUnique({
+        let user = await prisma.user.findUnique({
             where: {id: userId}
         })
-        res.json({credits: user?.credits})
+
+        // If user doesn't exist, sync from Clerk
+        if (!user) {
+            user = await syncUserFromClerk(userId);
+        }
+
+        res.json({credits: user.credits || 0})
 
     } catch (error: any) {
         Sentry.captureException(error);

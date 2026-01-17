@@ -1,6 +1,7 @@
 import {Request, Response } from 'express'
 import * as Sentry from "@sentry/node";
 import { prisma } from '../configs/prisma.js';
+import { syncUserFromClerk } from '../utils/userSync.js';
 import {v2 as cloudinary } from 'cloudinary'
 import {GenerateContentConfig, HarmBlockThreshold, HarmCategory} from '@google/genai'
 import fs from 'fs';
@@ -31,9 +32,14 @@ export const createProject = async (req:Request, res: Response) => {
         return res.status(400).json({message: 'Please upload at least 2 images'})
     }
 
-    const user = await prisma.user.findUnique({
+    let user = await prisma.user.findUnique({
         where: {id: userId}
     })
+
+    // If user doesn't exist, sync from Clerk
+    if (!user) {
+        user = await syncUserFromClerk(userId);
+    }
 
     if(!user || user.credits < 5){
         return res.status(401).json({message: 'Insufficient credits'})
@@ -137,7 +143,7 @@ export const createProject = async (req:Request, res: Response) => {
          }
 
          if(!finalBuffer){
-            throw new Error('Failed to generate image');
+            throw new Error('Failed to generate image')
          }
 
          const base64Image = `data:image/png;base64,${finalBuffer.toString('base64')}`
@@ -181,9 +187,14 @@ export const createVideo = async (req:Request, res: Response) => {
     const { projectId } = req.body;
     let isCreditDeducted = false;
 
-    const user = await prisma.user.findUnique({
+    let user = await prisma.user.findUnique({
         where: {id: userId}
     })
+
+    // If user doesn't exist, sync from Clerk
+    if (!user) {
+        user = await syncUserFromClerk(userId);
+    }
 
     if(!user || user.credits < 10){
         return res.status(401).json({ message: 'Insufficient credits' });
