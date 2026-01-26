@@ -15,7 +15,7 @@ export default function CTA() {
                             viewport={{ once: true }}
                             transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1 }}
                         >
-                            Ready to Transform Your Content?
+                            Ready to Create Stunning Visuals?
                         </motion.h2>
                         <motion.p className="max-sm:text-sm text-slate-400 mb-10 max-w-xl mx-auto"
                             initial={{ y: 60, opacity: 0 }}
@@ -23,7 +23,7 @@ export default function CTA() {
                             viewport={{ once: true }}
                             transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1, delay: 0.2 }}
                         >
-                            Join thousands of brands creating viral UGC with AI. No credit card required. Start creating now.
+                            Start fusing product images with model photos to generate professional composite visuals and videos. Perfect for e-commerce, marketing, and creative workflows.
                         </motion.p>
                         <motion.div
                             initial={{ y: 60, opacity: 0 }}

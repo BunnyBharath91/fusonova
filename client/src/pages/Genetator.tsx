@@ -69,7 +69,7 @@ const Genetator = () => {
 
       <form onSubmit={handleGenerate} className="max-w-4xl mx-auto mb-40"> 
 
-        <Title heading='Create In-Context Image' description="Upload your model and product images to generate stunning UGC, short-form videos and social media posts"/>
+        <Title heading='Create Composite Image' description="Upload your product image and model image to generate realistic composite visuals and short-form videos"/>
 
         <div className="flex gap-20 max-sm:flex-col items-start justify-between">
           {/* left col  */}

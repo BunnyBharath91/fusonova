@@ -3,18 +3,18 @@ import { UploadIcon, VideoIcon, ZapIcon } from 'lucide-react';
 export const featuresData = [
     {
         icon: <UploadIcon className="w-6 h-6" />,
-        title: 'Smart Upload',
-        desc: 'Drag & drop your assets. We auto-optimize formats and sizes.'
+        title: 'Smart Image Fusion',
+        desc: 'Upload a product image and a model image. Our AI uses Google Gemini to generate realistic composite visuals.'
     },
     {
         icon: <ZapIcon className="w-6 h-6" />,
-        title: 'Instant Generation',
-        desc: 'Optimized models deliver output in seconds with great fidelity.'
+        title: 'AI-Powered Generation',
+        desc: 'Leverage Google Gemini AI for image fusion and Google Veo for video generation with professional quality.'
     },
     {
         icon: <VideoIcon className="w-6 h-6" />,
-        title: 'Video Synthesis',
-        desc: 'Bring product shots to life with short-form, social-ready videos.'
+        title: 'Video Conversion',
+        desc: 'Transform generated images into short-form videos (5+ seconds) optimized for social media and marketing.'
     }
 ];
 
@@ -37,7 +37,7 @@ export const plansData = [
         id: 'pro',
         name: 'Pro',
         price: '$29',
-        desc: 'Creators & small teams.',
+        desc: 'For small teams and agencies.',
         credits: 80,
         features: [
             '80 Credits', 
@@ -66,20 +66,20 @@ export const plansData = [
 
 export const faqData = [
     {
-        question: 'How does the AI generation work?',
-        answer: 'We leverage state-of-the-art diffusion models trained on millions of product images to blend your product into realistic scenes while preserving details, lighting and reflections.'
+        question: 'How does Fusonova work?',
+        answer: 'Fusonova uses Google Gemini AI to fuse your product image with a model image, creating realistic composite visuals. You can then convert the generated image into a short-form video using Google Veo. Simply upload both images, configure your settings, and generate.'
     },
     {
-        question: 'Do I own the generated images?',
-        answer: 'Yes — you receive full commercial rights to any images and videos generated on the platform. Use them for ads, ecommerce, social media and more.'
+        question: 'Do I own the generated images and videos?',
+        answer: 'Yes — you receive full commercial rights to any images and videos generated on the platform. Use them for e-commerce listings, marketing materials, social media, and more.'
     },
     {
-        question: 'Can I cancel anytime?',
-        answer: 'Yes — you can cancel from your dashboard. You will retain access through the end of your billing period.'
+        question: 'How does the credit system work?',
+        answer: 'Fusonova uses a pay-as-you-go credit system. Image generation costs 5 credits, and video generation costs 10 credits. New users receive 20 credits to get started.'
     },
     {
-        question: 'What input formats do you support?',
-        answer: 'We accept JPG, PNG and WEBP. Outputs are high-resolution PNGs and MP4s optimized for social platforms.'
+        question: 'What image formats are supported?',
+        answer: 'We accept JPG, PNG, and WEBP formats for uploads. Generated outputs are high-resolution images and MP4 videos optimized for various platforms and aspect ratios (9:16 vertical or 16:9 horizontal).'
     }
 ];
 
